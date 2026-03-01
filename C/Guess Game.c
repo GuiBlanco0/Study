@@ -1,0 +1,37 @@
+#include <stdio.h>
+int main() {
+    printf("Guess Game!\n");
+
+    int secretnumber = 42;
+    int guess;
+    int number_of_tries = 1;
+
+    while(1) { // Infinite loop, will break only when theres a break statement
+        printf("Tentativa %d\n", number_of_tries);
+        printf("Qual o seu chute? ");
+        scanf("%d", &guess);
+
+        //validate the guess
+        if (guess < 0 || guess > 100) {
+            printf("Chute invalido! Por favor, chute um numero entre 0 e 100.\n");
+            continue; // Jump to the next iteration of the loop
+
+        } else if(guess == secretnumber) {
+            printf("Parabens, voce acertou!\n");
+            break;
+        }
+        else{
+            if(guess > secretnumber){
+                printf("Seu chute foi maior que o numero secreto\n");
+            }
+            else{
+                printf("Seu chute foi menor que o numero secreto\n");
+            }
+        }
+        number_of_tries++;
+    }
+    printf("Fim de jogo!");
+    printf("Voce acertou em %d tentativas!\n", number_of_tries);
+
+    return 0;
+}
