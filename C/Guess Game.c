@@ -5,6 +5,7 @@ int main() {
     int secretnumber = 42;
     int guess;
     int number_of_tries = 1;
+    int points = 1000;
 
     while(1) { // Infinite loop, will break only when theres a break statement
         printf("Tentativa %d\n", number_of_tries);
@@ -29,9 +30,19 @@ int main() {
             }
         }
         number_of_tries++;
+        int lostPoints = (guess - secretnumber) / 2;
+        //Modifying Alura's class code
+        if (lostPoints < 0){
+            lostPoints = lostPoints * -1;
+        }
+        else{
+            lostPoints = lostPoints;
+        }
+        points = points - lostPoints;
     }
     printf("Fim de jogo!");
     printf("Voce acertou em %d tentativas!\n", number_of_tries);
+    printf("Total de pontos: %d\n", points);
 
     return 0;
 }
