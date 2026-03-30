@@ -1,11 +1,16 @@
 #include <stdio.h>
+#include <stdlib.h>
+#include <time.h>
+
 int main() {
     printf("Guess Game!\n");
-
-    int secretnumber = 42;
+    int segundos = time(0);
+    srand(segundos);
+    int bigNumber = rand();
+    int secretnumber = bigNumber % 100;
     int guess;
     int number_of_tries = 1;
-    int points = 1000;
+    double points = 1000;
 
     while(1) { // Infinite loop, will break only when theres a break statement
         printf("Tentativa %d\n", number_of_tries);
@@ -30,7 +35,7 @@ int main() {
             }
         }
         number_of_tries++;
-        int lostPoints = (guess - secretnumber) / 2;
+        double lostPoints = (guess - secretnumber) / 2.0;
         //Modifying Alura's class code
         if (lostPoints < 0){
             lostPoints = lostPoints * -1;
@@ -42,7 +47,7 @@ int main() {
     }
     printf("Fim de jogo!");
     printf("Voce acertou em %d tentativas!\n", number_of_tries);
-    printf("Total de pontos: %d\n", points);
+    printf("Total de pontos: %.1f\n", points);
 
     return 0;
 }
